@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 1872300567
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: loginpanel
+      Dependencies: {}
