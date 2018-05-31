@@ -5,9 +5,22 @@ using System.Text;
 
 namespace Assets
 {
-    class PanelManager
+    internal class PanelManager
     {
         public Stack<PanelBase> PanelStack = new Stack<PanelBase>();
+
+        private static UnitTestPanel unitTestPanel = null;
+        public static UnitTestPanel UnitTestPanel
+        {
+            get
+            {
+                if (unitTestPanel == null)
+                {
+                    unitTestPanel = new UnitTestPanel();
+                }
+                return unitTestPanel;
+            }
+        }
 
         private static LoginPanel loginPanel = null;
         public static LoginPanel LoginPanel
@@ -19,6 +32,32 @@ namespace Assets
                     loginPanel = new LoginPanel();
                 }
                 return loginPanel;
+            }
+        }
+
+        private static MessageBox messageBox = null;
+        public static MessageBox MessageBox
+        {
+            get
+            {
+                if (messageBox == null)
+                {
+                    messageBox = new MessageBox();
+                }
+                return messageBox;
+            }
+        }
+
+        private static FloatPanel floatPanel = null;
+        public static FloatPanel FloatPanel
+        {
+            get
+            {
+                if (floatPanel == null)
+                {
+                    floatPanel = new FloatPanel();
+                }
+                return floatPanel;
             }
         }
     }

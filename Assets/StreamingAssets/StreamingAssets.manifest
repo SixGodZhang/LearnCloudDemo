@@ -1,7 +1,7 @@
 ManifestFileVersion: 0
-CRC: 1677565998
+CRC: 3296944345
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: loginpanel
+      Name: unittestpanel
       Dependencies: {}

@@ -1,93 +1,58 @@
 ﻿using Assets;
 using LeanCloud;
+using PathologicalGames;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour {
-
+public class GameManager : MonoBehaviour
+{
     public Transform testGo;
-    private string childName = "GameObject";
 
-	void Start () {
+    private void Start()
+    {
         PanelManager.LoginPanel.Show();
+        Initialize();
         //Debug.Log("child count : "+ testGo.FindChildWithName(childName).childCount);
-
     }
 
-
-
-
-    /// <summary>
-    /// 注册新用户
-    /// </summary>
-    void Singup()
+    public void Initialize()
     {
-        var user = new AVUser();
-        user.Username = SystemInfo.deviceUniqueIdentifier;  //唯一识别码
-        user.Password = SystemInfo.deviceUniqueIdentifier.Substring(2, 14);
-        user["testA"] = "aaa";
-        user.SignUpAsync().ContinueWith(t =>
-        {
-            if (t.IsFaulted || t.IsCanceled)
-            {
-                Debug.Log(t.Exception.Message);
-            }
-            else
-            {
-                Debug.Log(t.Exception.Message);
-                string uid = user.ObjectId;
-            }
-        });
-
+        InitializeMessageBoxPoolManager();//初始化提示弹窗对象池
+        InitializeFloatPanelPoolManager();//初始化飘字对象池
+        InitializeDataClass(); 
     }
 
-    /// <summary>
-    /// 登录已有账户
-    /// </summary>
-    void Login(string username,string password)
+    private void InitializeDataClass()
     {
-        AVUser.LogInAsync(username, password).ContinueWith(t => {
-            if (t.IsFaulted || t.IsCanceled)
-            {
-                Debug.Log(t.Exception.Message);
-            }
-            else
-            {
-                string str = AVUser.CurrentUser.Get<string>("Username");
-                Debug.Log(str);
-            }
-        });
+        AVObject.RegisterSubclass<ACCOUNT>();
     }
 
-    /// <summary>
-    /// 数据常用方法
-    /// </summary>
-    void Updata()
+    
+    private void InitializeMessageBoxPoolManager()
     {
-        //updata data
-        AVObject ao = AVUser.CurrentUser;
-        ao["testA"] = "a5";
-        //add remove
-        ao.Add("testB", "b1");
-        ao.Remove("testA");
-        //link focusType 使用链接对象
-        AVObject sceneData = new AVObject("GirType");
-        sceneData["typeName"] = "class1";
-        ao["SceneData"] = sceneData;
-        //Async
-        ao.SaveAsync();
+        SpawnPool spawnPool = PoolManager.Pools.Create("MessageBox");
+
+        PrefabPool messageboxPool = new PrefabPool(PanelManager.MessageBox.GetPanel());
+        messageboxPool.preloadAmount = 1;
+
+        messageboxPool.limitInstances = true;
+        messageboxPool.limitAmount = 1;
+
+        spawnPool.CreatePrefabPool(messageboxPool);
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    void LoadFoucsType(){
-    //loadd focusType
-    AVObject theSceneData = AVUser.CurrentUser.Get<AVObject> ("SceneData");
-    Task<AVObject> fetchTask = theSceneData.FetchIfNeededAsync ();
-    Debug.Log (theSceneData.Get<string> ("typeName"));
+    private void InitializeFloatPanelPoolManager()
+    {
+        SpawnPool spawnPool = PoolManager.Pools["MessageBox"];
+
+        PrefabPool floatPanelPool = new PrefabPool(PanelManager.FloatPanel.GetPanel());
+        floatPanelPool.preloadAmount = 3;
+
+        floatPanelPool.limitInstances = true;
+        floatPanelPool.limitAmount = 3;
+
+        spawnPool.CreatePrefabPool(floatPanelPool);
     }
-
-
 }
