@@ -1,7 +1,7 @@
 ManifestFileVersion: 0
-CRC: 3296944345
+CRC: 1736229071
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: unittestpanel
+      Name: messagebox
       Dependencies: {}

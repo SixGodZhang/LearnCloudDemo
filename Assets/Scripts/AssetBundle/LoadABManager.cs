@@ -20,7 +20,8 @@ namespace Assets
             //unload
             //baseAB.Unload(true);
 
-            return GameObject.Instantiate<GameObject>(rootPanel);
+            //return GameObject.Instantiate<GameObject>(rootPanel);
+            return rootPanel;
         }
     }
 

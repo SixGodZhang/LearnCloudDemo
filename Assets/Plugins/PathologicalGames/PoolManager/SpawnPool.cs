@@ -324,7 +324,7 @@ namespace PathologicalGames
                                                 this.poolName,
                                                 instance.name));
 
-                    if (parent) instance.parent = this.group;
+                    if (parent) instance.SetParent(this.group,false);
 
                     // New instances are active and must be added to the internal list 
                     if (!despawn) this._spawned.Add(instance);
@@ -442,12 +442,12 @@ namespace PathologicalGames
 					
 					if (parent != null)  // User explicitly provided a parent
 					{
-						inst.parent = parent;
+                        inst.SetParent(parent,false);
 					}
                     else if (!this.dontReparent && inst.parent != this.group)  // Auto organize?
 					{
-						// If a new instance was created, it won't be grouped
-                        inst.parent = this.group;
+                        // If a new instance was created, it won't be grouped
+                        inst.SetParent(this.group, false);
 					}
 
                     // Add to internal list - holds only active instances in the pool
@@ -479,11 +479,11 @@ namespace PathologicalGames
 			
 			if (parent != null)  // User explicitly provided a parent
 			{
-				inst.parent = parent;
+                inst.SetParent(parent, false);
 			}
             else  // Auto organize
 			{
-            	inst.parent = this.group;  
+                inst.SetParent(this.group,false); 
 			}
 
 
@@ -828,7 +828,7 @@ namespace PathologicalGames
         /// </summary>
         public void Despawn(Transform instance, Transform parent)
         {
-            instance.parent = parent;
+            instance.SetParent(parent, false);
             this.Despawn(instance);
         }
 
@@ -1680,7 +1680,7 @@ namespace PathologicalGames
             this.nameInstance(inst);  // Adds the number to the end
 
             if (!this.spawnPool.dontReparent)
-                inst.parent = this.spawnPool.group;  // The group is the parent by default
+                inst.SetParent(this.spawnPool.group,false);  // The group is the parent by default
 
             if (this.spawnPool.matchPoolScale)
                 inst.localScale = Vector3.one;

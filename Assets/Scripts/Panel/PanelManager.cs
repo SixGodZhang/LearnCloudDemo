@@ -9,6 +9,19 @@ namespace Assets
     {
         public Stack<PanelBase> PanelStack = new Stack<PanelBase>();
 
+        private static StartPanel startPanel = null;
+        public static StartPanel StartPanel
+        {
+            get
+            {
+                if (startPanel == null)
+                {
+                    startPanel = new StartPanel();
+                }
+                return startPanel;
+            }
+        }
+
         private static UnitTestPanel unitTestPanel = null;
         public static UnitTestPanel UnitTestPanel
         {

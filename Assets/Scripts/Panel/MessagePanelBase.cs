@@ -55,7 +55,7 @@ namespace Assets
             }
 
             GameObject uiRoot = GameObject.Find("MessageBoxRoot");
-            current.SetParent(uiRoot.transform);
+            current.SetParent(uiRoot.transform,false);
             //reset position
             current.GetComponent<RectTransform>().anchoredPosition = new Vector2(0.0f, 0.0f);
             InitializePanel(current);
@@ -72,13 +72,16 @@ namespace Assets
 
         public Transform GetPanel()
         {
-            Transform getPanel = Resources.Load<Transform>("Prefab/"+AssetName);
+
+            //Resources.Load<Transform>("Prefab/"+AssetName);
+            GameObject getPanel = LoadABManager.LoadABFromFile(AssetName, BundleName);
+
             if (getPanel == null)
             {
                 Debug.Log("MessageBox Not Found!");
             }
 
-            return getPanel;
+            return getPanel.transform;
         }
 
         /// <summary>

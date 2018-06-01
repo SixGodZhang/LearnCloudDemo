@@ -12,16 +12,25 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        PanelManager.LoginPanel.Show();
+        PanelManager.StartPanel.Show();
+        //PanelManager.LoginPanel.Show();
         Initialize();
         //Debug.Log("child count : "+ testGo.FindChildWithName(childName).childCount);
     }
 
     public void Initialize()
     {
+        InitializeGameObject();
         InitializeMessageBoxPoolManager();//初始化提示弹窗对象池
         InitializeFloatPanelPoolManager();//初始化飘字对象池
         InitializeDataClass(); 
+    }
+
+    private void InitializeGameObject()
+    {
+        DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(GameObject.Find("MessageBoxRoot")); 
+        DontDestroyOnLoad(GameObject.Find("EventSystem"));
     }
 
     private void InitializeDataClass()
@@ -32,7 +41,7 @@ public class GameManager : MonoBehaviour
     
     private void InitializeMessageBoxPoolManager()
     {
-        SpawnPool spawnPool = PoolManager.Pools.Create("MessageBox");
+        SpawnPool spawnPool = PoolManager.Pools.Create("UIRoot/MessageBox");
 
         PrefabPool messageboxPool = new PrefabPool(PanelManager.MessageBox.GetPanel());
         messageboxPool.preloadAmount = 1;

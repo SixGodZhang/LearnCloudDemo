@@ -38,8 +38,9 @@ namespace Assets
                 return;
             }
             GameObject uiRoot = GameObject.Find(rootName);
-            currentPanel = LoadABManager.LoadABFromFile(AssetName, BundleName);
-            currentPanel.transform.SetParent(uiRoot.transform);
+            GameObject prefab = LoadABManager.LoadABFromFile(AssetName, BundleName);
+            currentPanel = GameObject.Instantiate<GameObject>(prefab);
+            currentPanel.transform.SetParent(uiRoot.transform,false);
             //reset position
             currentPanel.GetComponent<RectTransform>().anchoredPosition = new Vector2(0.0f, 0.0f);
             InitializePanel(currentPanel.transform);

@@ -7,6 +7,7 @@ using UnityEngine.UI;
 using TMPro;
 using LeanCloud;
 using System.Threading.Tasks;
+using UnityEngine.SceneManagement;
 
 namespace Assets
 {
@@ -124,28 +125,25 @@ namespace Assets
 
         private void OnClickLoginBtn()
         {
-            AVUser.Query.WhereEqualTo("username", UserNameInputField.text).FindAsync().ContinueWith((t) =>
+            var userName = UserNameInputField.text;
+            var pwd = PasswordInputField.text;
+            AVUser.LogInAsync(userName, pwd).ContinueWith(t =>
             {
-
-            //    if (t.IsFaulted || t.IsCanceled)
-            //    {
-            //        string err = t.Exception.Message;
-            //        Debug.LogFormat("user not found : {0}", err);
-            //    }
-            //    else
-            //    {
-            //        Debug.LogFormat("find this user: {0}", AVUser.CurrentUser.ObjectId);
-            //    }
-
-            //    //string tt = t.Exception.InnerExceptions[0].Message;
-            //    IEnumerable<AVUser> players = t.Result;
-            //    AVUser user = players.First<AVUser>();
-            //    string name = user.Get<string>("username");
-            //    GlobalThread.runOnMainThread(() =>
-            //    {
-            //        PasswordInputField.text = name;
-            //    });
-            //});
+                if (t.IsFaulted || t.IsCanceled)
+                {
+                    var error = t.Exception.Message; // 登录失败，可以查看错误信息。
+                    GlobalThread.runOnMainThread(()=> {
+                        PanelManager.FloatPanel.Show("登录失败，请联系管理员!");
+                    });
+                }
+                else
+                {
+                    GlobalThread.runOnMainThread(() => {
+                        PanelManager.FloatPanel.Show("登录成功!"+AVUser.CurrentUser.ObjectId);
+                        SceneManager.LoadScene("Scenes/"+GameScene.LoadingScene);
+                    });
+                }
+            });
         }
 
         private void OnClickQueryBtn()

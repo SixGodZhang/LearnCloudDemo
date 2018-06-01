@@ -1,0 +1,36 @@
+ManifestFileVersion: 0
+CRC: 364613070
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 82cc36b055ea44cde909feea8472bb47
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 4ba257e35c979cc423a83286653d7726
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+- Class: 114
+  Script: {fileID: 1453722849, guid: 89f0137620f6af44b9ba852b4190e64e, type: 3}
+- Class: 114
+  Script: {fileID: -667331979, guid: 89f0137620f6af44b9ba852b4190e64e, type: 3}
+- Class: 114
+  Script: {fileID: 1908110080, guid: 89f0137620f6af44b9ba852b4190e64e, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 222
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
+Assets:
+- Assets/Prefabs/FloatPanel.prefab
+Dependencies: []

@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 1890404838
+CRC: 3253386183
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 4efc251e475ab277b50460a1c2ffde04
+    Hash: 30d6db5bc308dba36bc3c5c097736aaa
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 9421b54e54efbf2c8e02a1567f1ff77d
+    Hash: 0f1e4450ff7b01e9ad4cb58a65530bf5
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -17,12 +17,34 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 48
   Script: {instanceID: 0}
+- Class: 74
+  Script: {instanceID: 0}
+- Class: 82
+  Script: {instanceID: 0}
+- Class: 83
+  Script: {instanceID: 0}
+- Class: 91
+  Script: {instanceID: 0}
+- Class: 95
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 86bba27189efb43d79a3bfe0075bc7fa, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 32414c8154f854aea9dca3538cec788b, type: 3}
 - Class: 114
   Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 - Class: 114
   Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 - Class: 114
   Script: {fileID: -146154839, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+- Class: 114
+  Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+- Class: 114
+  Script: {fileID: 575553740, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+- Class: 114
+  Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 606828f3686ee4f0289cece909531556, type: 3}
 - Class: 114
   Script: {fileID: 1453722849, guid: 89f0137620f6af44b9ba852b4190e64e, type: 3}
 - Class: 114
@@ -33,12 +55,16 @@ ClassTypes:
   Script: {fileID: 1908110080, guid: 89f0137620f6af44b9ba852b4190e64e, type: 3}
 - Class: 115
   Script: {instanceID: 0}
+- Class: 128
+  Script: {instanceID: 0}
 - Class: 213
   Script: {instanceID: 0}
 - Class: 222
   Script: {instanceID: 0}
 - Class: 224
   Script: {instanceID: 0}
+- Class: 225
+  Script: {instanceID: 0}
 Assets:
-- Assets/Prefabs/LoginPanel.prefab
+- Assets/Prefabs/StartPanel.prefab
 Dependencies: []
